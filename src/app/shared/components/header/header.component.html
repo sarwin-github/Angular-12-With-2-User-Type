@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+	<div class="container">
+		<button class="navbar-toggler mt-2" type="button" data-toggle="collapse" data-target="#navCollapseContent" aria-controls="navCollapseContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand d-md-none d-lg-none d-none d-sm-block d-block" href="#"></a>
+
+		<div class="navbar-collapse collapse"  id="navCollapseContent">
+			<ul class="nav nav-tabs bg-primary ml-auto">
+			  <li class="nav-item">
+			    <a class="nav-link" routerLink="/">Home</a>
+			  </li>
+			  <li class="nav-item" *ngIf="!loggedInUser; else showDropdown">
+			    <a class="nav-link" routerLink="/user/signin">Sign in</a>
+			  </li>
+			  <ng-template #showDropdown>
+			    <li class="nav-item dropdown">
+			      <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			        Profile <span class="fa fa-chevron-down"></span>
+			      </a>
+			      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			        <a class="dropdown-item myDropdownLink" routerLink="/user/profile">Profile</a>
+			        <a class="dropdown-item myDropdownLink" (click)="userLogout()">Logout</a>
+			      </div>
+			    </li>
+			  </ng-template>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<router-outlet></router-outlet>
