@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SigninComponent } from './users/signin/signin.component';
-import { SignupComponent } from './users/signup/signup.component';
-import { ProfileComponent } from './users/profile/profile.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { environment } from '../../../../environments/environment';
 import { UserRoutes } from './user.routing';
-import { environment } from '../../../environments/environment';
 
 @NgModule({
   imports: [

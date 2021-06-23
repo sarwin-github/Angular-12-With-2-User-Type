@@ -1,11 +1,11 @@
 <div class="container py-5" [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
 	<div class="row">
 		<div class="col-md-4 card pt-5 pb-3 text-center px-5">
-			<h3 class="text-muted">User Profile</h3>
+			<h3 class="text-muted">Client Profile</h3>
 			<img src="/assets/images/image-placeholder.png" alt="" class="img-fluid my-4">
 		</div>
 		<div class="col-md-8 card py-5 px-3 text-center">
-			<h5 class="text-muted m-0">Welcome to Platform {{user_data.user?.name}}</h5>
+			<h5 class="text-muted m-0">Welcome to Platform {{client_data.client?.name}}</h5>
 
 			<div class="px-md-4 px-1 pt-4">
 				<div class="text-justify text-muted px-3">
@@ -14,20 +14,25 @@
 				<hr>
 				<h5 class="text-left text-muted pl-md-5">Details</h5>
 				<div class="media pl-md-5">
-					<img class="mr-3" src="/assets/images/face-1.jpg" alt="">
+					<img class="mr-3" src="/assets/images/face-2.jpg" alt="">
 					<div class="media-body">
 						<dl class="text-left">
 							<dd>
-								Name: {{user_data.user?.name}}
+								Name: {{client_data.client?.name}}
+							</dd>
+
+							<dd>
+								Company: {{client_data.client?.company}}
+							</dd>
+
+							<dd>
+								Email: {{client_data.client?.email}}
 							</dd>
 							<dd>
-								Email: {{user_data.user?.email}}
+								Phone: {{client_data.client?.phone}}
 							</dd>
 							<dd>
-								Phone: {{user_data.user?.phone}}
-							</dd>
-							<dd>
-								Address: {{user_data.user?.address}}
+								Address: {{client_data.client?.address}}
 							</dd>
 						</dl>
 

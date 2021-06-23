@@ -7,23 +7,48 @@
 
 		<div class="navbar-collapse collapse"  id="navCollapseContent">
 			<ul class="nav nav-tabs bg-primary ml-auto">
-			  <li class="nav-item">
-			    <a class="nav-link" routerLink="/">Home</a>
-			  </li>
-			  <li class="nav-item" *ngIf="!loggedInUser; else showDropdown">
-			    <a class="nav-link" routerLink="/user/signin">Sign in</a>
-			  </li>
-			  <ng-template #showDropdown>
-			    <li class="nav-item dropdown">
-			      <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			        Profile <span class="fa fa-chevron-down"></span>
-			      </a>
-			      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			        <a class="dropdown-item myDropdownLink" routerLink="/user/profile">Profile</a>
-			        <a class="dropdown-item myDropdownLink" (click)="userLogout()">Logout</a>
-			      </div>
-			    </li>
-			  </ng-template>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/">Home</a>
+				</li>
+
+				<li class="nav-item nav-item-divider">
+					<span class="nav-link nav-item-divider mx-1"></span>
+				</li>
+
+				<li class="nav-item" *ngIf="!loggedInUser && !loggedInClient">
+					<a class="nav-link" routerLink="/user/signin">User Sign in</a>
+				</li>
+
+				<li class="nav-item dropdown" *ngIf="loggedInUser">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Profile <span class="fa fa-chevron-down"></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item myDropdownLink" routerLink="/user/profile">Profile</a>
+						<a class="dropdown-item myDropdownLink" (click)="userLogout()">Logout</a>
+					</div>
+				</li>
+
+
+				<li class="nav-item nav-item-divider" *ngIf="!loggedInUser">
+					<span class="nav-link nav-item-divider mx-1">|</span>
+				</li>
+
+				<li class="nav-item nav-item-no-hover" 
+				*ngIf="!loggedInUser && !loggedInClient">
+					<a class="nav-link" routerLink="/client/signin">Client Sign in</a>
+				</li>
+
+				<li class="nav-item dropdown" *ngIf="loggedInClient">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Profile <span class="fa fa-chevron-down"></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item myDropdownLink" routerLink="/client/profile">Profile</a>
+						<a class="dropdown-item myDropdownLink" (click)="clientLogout()">Logout</a>
+					</div>
+				</li>
+
 			</ul>
 		</div>
 	</div>

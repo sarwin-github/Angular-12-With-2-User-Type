@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { ProfileComponent } from './users/profile/profile.component';
-import { SigninComponent } from './users/signin/signin.component';
-import { SignupComponent } from './users/signup/signup.component';
-import { UserGuard } from '../../shared/guard/auth/user.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { UserGuard } from '../../../shared/guard/auth/user.guard';
 
 export const UserRoutes: Routes = [
   { 

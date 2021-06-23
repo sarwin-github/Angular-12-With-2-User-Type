@@ -5,3 +5,9 @@
 		cursor: pointer;
 	}
 }
+
+.nav-item-divider{
+	&:hover{
+		border: none !important;
+	}
+}

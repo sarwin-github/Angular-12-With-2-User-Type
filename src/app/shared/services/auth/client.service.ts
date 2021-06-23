@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  	providedIn: 'root'
+	providedIn: 'root'
 })
-export class UsersService {
-	private isUserLoggedIn: any;
+export class ClientService {
+	private isClientLoggedIn: any;
 	private server = environment.server;
 
-	private userStatus = new BehaviorSubject<any>(null || localStorage.getItem('userLogin'));
-	public userStatus$ = this.userStatus.asObservable();
+	private clientStatus = new BehaviorSubject<any>(null || localStorage.getItem('clientLogin'));
+	public clientStatus$ = this.clientStatus.asObservable();
 
   	constructor(private http: Http, 
   		private router: Router) {
@@ -32,20 +32,20 @@ export class UsersService {
   	}
 
 
-  	// Get user login form
-	getUserLoginForm(): Observable<any>{
+  	// Get client login form
+	getClientLoginForm(): Observable<any>{
 		return this.http
-		.get(`${this.server}/api/user/signin`)
+		.get(`${this.server}/api/client/signin`)
 		.pipe(
 			map(res => res.json()),
 			catchError(this.handleError)
 		);
 	}
 
-	// post login user
+	// post login client
 	postLogin(body: any): Observable<any>{
 		return this.http
-		.post(`${this.server}/api/user/signin`, body, { /*withCredentials : true*/ })
+		.post(`${this.server}/api/client/signin`, body, { /*withCredentials : true*/ })
 		.pipe(
 			map(res => res.json()),
 			catchError(this.handleError)
@@ -53,19 +53,19 @@ export class UsersService {
 	}
 
 	// get signup form
-	getUserSignupForm(): Observable<any>{
+	getClientSignupForm(): Observable<any>{
 		return this.http
-		.get(`${this.server}/api/user/signup`)
+		.get(`${this.server}/api/client/signup`)
 		.pipe(
 			map(res => res.json()),
 			catchError(this.handleError)
 		);
 	}
 
-	// post signup user
+	// post signup client
 	postSignUp(body: any): Observable<any>{
 		return this.http
-		.post(`${this.server}/api/user/signup`, body)
+		.post(`${this.server}/api/client/signup`, body)
 		.pipe(
 			map(res => res.json()),
 			catchError(this.handleError)
@@ -73,9 +73,9 @@ export class UsersService {
 	}
 
 	// get login status from session storage
-	getUserProfile(): any {
+	getClientProfile(): any {
 		return this.http
-		.get(`${this.server}/api/user/profile`)
+		.get(`${this.server}/api/client/profile`)
 		.pipe(
 			map(res => res.json()),
 			catchError(this.handleErrorAuthorize)
@@ -86,9 +86,9 @@ export class UsersService {
 	getRefreshToken(): any {
 		if(localStorage.getItem('refreshToken')){
 			return this.http
-			.post(`${this.server}/api/user/token/refresh`, 
+			.post(`${this.server}/api/client/token/refresh`, 
 				JSON.stringify({ 
-					user: localStorage.getItem('user'),
+					client: localStorage.getItem('client'),
 					refreshToken: localStorage.getItem('refreshToken') 
 				})
 			)
@@ -101,23 +101,23 @@ export class UsersService {
 	}
 
 	// get login status from session storage
-	getUserLoginStatus(): any  {
-		let storedItem:any = localStorage.getItem('userLogin');
+	getClientLoginStatus(): any  {
+		let storedItem:any = localStorage.getItem('clientLogin');
 
 		if(!!storedItem && storedItem != 'false') return true; 
 		else return false;
 	}
 
-	// logout user
-	logoutUser(): Observable<any>{
+	// logout client
+	logoutClient(): Observable<any>{
 		return this.http
-		.get(`${this.server}/api/user/logout`)
+		.get(`${this.server}/api/client/logout`)
 		.pipe(
 			map(res => {
 				localStorage.clear();
-				this.isUserLoggedIn = false;
-				this.userStatus.next(undefined);
-				this.router.navigate(['/user/signin']);
+				this.isClientLoggedIn = false;
+				this.clientStatus.next(undefined);
+				this.router.navigate(['/client/signin']);
 				return res.json();
 			}),
 			catchError(this.handleError)
@@ -125,11 +125,10 @@ export class UsersService {
 	}
 
 	// set login status to true in local storage
-	setUserLogin(status: any): void {
-		this.userStatus.next(status);
-		localStorage.setItem('userLogin', status);
-		this.isUserLoggedIn = true;
+	setClientLogin(status: any): void {
+		this.clientStatus.next(status);
+		localStorage.setItem('clientLogin', status);
+		this.isClientLoggedIn = true;
 	}
 
-	
 }

@@ -1,7 +1,7 @@
 <div class="container py-5" [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
 	<div class="row">
 		<div class="offset-2 col-md-8 card py-5">
-			<form class="px-3" (submit)="signUpUser($event)" [formGroup]="userSignupForm">
+			<form class="px-3" (submit)="signUpClient($event)" [formGroup]="clientSignupForm">
 				<!-- Error Message -->
 				<div class="alert alert-danger alert-dismissible fade show error-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="error" role="alert">
 				  	<a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="onAlertClose()">&times;</a>
@@ -14,7 +14,7 @@
 				</div>  
 
 				<div class="form-group">
-					<h4 class="text-muted m-0">Create a new user account</h4>
+					<h4 class="text-muted m-0">Create a new Client Account</h4>
 					<p class="text-justify text-muted mt-2">
 						Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. 
 					</p>
@@ -36,6 +36,11 @@
 				</div>
 
 				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Company" formControlName="company">
+					<small id="emailHelp" class="form-text text-muted">Company Name</small>
+				</div>
+
+				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Address" formControlName="address">
 					<small id="emailHelp" class="form-text text-muted">Block No. City, State, Country</small>
 				</div>
@@ -45,7 +50,7 @@
 				</div>
 
 				<div class="text-center">
-					<a [routerLink]="'/user/signin'" class="mat-primary text-center full-width">Do you have an account already? Sign in now.</a><br>
+					<a [routerLink]="'/client/signin'" class="mat-primary text-center full-width">Do you have an account already? Sign in now.</a><br>
 				</div>
 
 				<button type="submit" class="btn btn-primary float-right mt-3">Submit</button>

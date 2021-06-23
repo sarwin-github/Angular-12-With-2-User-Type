@@ -7,7 +7,7 @@ import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'signup-user',
   animations: [mainAnimations],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']

@@ -19,7 +19,18 @@ export const rootRouterConfig: Routes = [
     children: [
       {
         path: 'user',
-        loadChildren: './views/auth/user.module#UserModule'
+        loadChildren: './views/auth/users/user.module#UserModule'
+      }
+    ]
+  },
+
+  {
+    path: '',
+    component: HeaderComponent,
+    children: [
+      {
+        path: 'client',
+        loadChildren: './views/auth/clients/client.module#ClientModule'
       }
     ]
   },
